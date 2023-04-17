@@ -1,6 +1,5 @@
 package com.example.bmi;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -45,7 +44,19 @@ public class MainActivity extends AppCompatActivity {
         float height = Float.parseFloat(heightString) / 100; // convert cm to m
         float bmi = weight / (height * height);
 
+        String category = "";
+
+        if (bmi < 18.5) {
+            category = "Underweight";
+        } else if (bmi >= 18.5 && bmi < 25) {
+            category = "Normal";
+        } else if (bmi >= 25 && bmi < 30) {
+            category = "Overweight";
+        } else {
+            category = "Obesity";
+        }
+
         String bmiString = String.format("%.1f", bmi);
-        resultOutput.setText(bmiString);
+        resultOutput.setText("BMI: " + bmiString + "\nCategory: " + category);
     }
 }
